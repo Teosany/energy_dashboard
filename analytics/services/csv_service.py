@@ -1,5 +1,5 @@
-from datetime import datetime
 import csv
+from datetime import datetime
 from io import StringIO
 from typing import Iterator
 

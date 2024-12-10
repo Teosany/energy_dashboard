@@ -1,6 +1,7 @@
-from django.db.models import Sum, QuerySet
 import json
-from typing import Dict, Any
+from typing import Dict
+
+from django.db.models import Sum, QuerySet
 
 
 class ChartService:

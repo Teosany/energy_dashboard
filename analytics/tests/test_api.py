@@ -1,8 +1,11 @@
-from django.test import TestCase
-from django.urls import reverse
-from analytics.models import EnergyData
 from decimal import Decimal
 from datetime import datetime
+
+from django.test import TestCase
+from django.urls import reverse
+
+from analytics.models import EnergyData
+
 
 class ApiTests(TestCase):
     def setUp(self):
