@@ -371,11 +371,15 @@ pyrightconfig.json
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/pycharm+all,python,django,visualstudiocode
+
+# Mac
 .DS_Store
 .DS_Store?
 ._*
 .Spotlight-V100
 .Trashes
+.AppleDouble
+.LSOverride
 
 # Node
 **/node_modules/
