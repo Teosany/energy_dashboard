@@ -376,3 +376,13 @@ pyrightconfig.json
 ._*
 .Spotlight-V100
 .Trashes
+
+# Node
+**/node_modules/
+node_modules/
+theme/static_src/node_modules/
+npm-debug.log
+
+# Django
+media/
+staticfiles/
