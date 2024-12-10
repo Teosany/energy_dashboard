@@ -18,6 +18,7 @@ A Django application for analyzing and visualizing energy consumption data acros
 
 - Django
 - Tailwind CSS
+- Tailwind UI (license)
 - Chart.js
 - SQLite3 (default)
 
