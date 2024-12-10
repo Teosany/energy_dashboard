@@ -14,7 +14,7 @@ class CustomSortServiceTests(TestCase):
 
     def test_custom_sort(self):
         """Test sorting with real data from CSV file"""
-        with open('analytics/static/data/data_types.csv', 'r', encoding='utf-8') as file:
+        with open('analytics/static/data/data_types.csv', 'r', encoding='utf-8-sig') as file:
             next(file)
             real_data = set(line.split(';')[2].strip() for line in file)
 
