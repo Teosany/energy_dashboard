@@ -1,13 +1,13 @@
 from decimal import Decimal
-from typing import Dict, Union
+from typing import Dict, Any
 import csv
 
 
 class EnergyConsumptionService:
     """Service for analyzing French energy consumption data."""
 
-    @classmethod
-    def find_peak_consumption(cls, file_path: str) -> Dict[str, Union[str, float]]:
+    @staticmethod
+    def find_peak_consumption(file_path: str) -> Dict[str, Any]:
         peak_info = {"region": "", "date": "", "consumption": Decimal('0')}
 
         with open(file_path, encoding='utf-8-sig') as file:
