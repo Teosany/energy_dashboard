@@ -27,9 +27,6 @@ class CustomSortServiceTests(TestCase):
 
         result = CustomSortService.custom_sort(list(typologies))
 
-        for item in result:
-            print(f"Len {len(item)}: {item}")
-
         for i in range(len(result) - 1):
             if len(result[i]) == len(result[i + 1]):
                 self.assertLessEqual(result[i], result[i + 1])
