@@ -1,0 +1,47 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html class="h-full bg-white" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Tableau de bord énergétique{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'analytics/favicon.svg' %}">
+    {% tailwind_css %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{% static 'analytics/js/main.js' %}" type="module"></script>
+</head>
+<body class="h-full">
+    <div class="flex flex-col min-h-full">
+        <header class="bg-gray-900">
+            <div class="h-16 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+                <h1 class="text-xl font-semibold text-white">Énergie & Données</h1>
+                <nav>
+                    <button onclick="showApiModal()" class="text-gray-300 hover:text-white pr-8">API</button>
+                    <a href="{% url 'admin:index' %}" class="text-gray-300 hover:text-white">Admin</a>
+                </nav>
+            </div>
+        </header>
+
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="p-4 {% if message.tags == 'error' %}bg-red-100 text-red-700{% else %}bg-green-100 text-green-700{% endif %}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <main class="grow lg:flex">
+            <div class="lg:w-[32rem] border-r border-gray-200">
+                {% block table_content %}{% endblock %}
+            </div>
+            <div class="flex-1">
+                {% block main_content %}{% endblock %}
+            </div>
+        </main>
+    </div>
+
+    {% include 'analytics/components/api-modal.html' %}
+</body>
+</html>
