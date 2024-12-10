@@ -21,6 +21,9 @@ env = environ.Env(
     SECURE_SSL_REDIRECT=(bool, False),
     SESSION_COOKIE_SECURE=(bool, False),
     CSRF_COOKIE_SECURE=(bool, False),
+    DJANGO_SUPERUSER_USERNAME=(str, 'admin'),
+    DJANGO_SUPERUSER_EMAIL=(str, 'admin@example.com'),
+    DJANGO_SUPERUSER_PASSWORD=(str, 'default_password'),
 )
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -166,6 +169,16 @@ if not DEBUG:
     SECURE_HSTS_SECONDS = 31536000
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
+
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+
+
+# Superuser
+DJANGO_SUPERUSER_USERNAME = env('DJANGO_SUPERUSER_USERNAME')
+DJANGO_SUPERUSER_EMAIL = env('DJANGO_SUPERUSER_EMAIL')
+DJANGO_SUPERUSER_PASSWORD = env('DJANGO_SUPERUSER_PASSWORD')
 
 
 # Default primary key field type
