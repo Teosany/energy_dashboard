@@ -21,9 +21,7 @@ class CustomSortServiceTests(TestCase):
             for line in file:
                 if line.strip():
                     column = line.split(';')[4]
-                    types = [t.strip() for t in column.split('"),') if t.strip()]
-                    types = [t + '")' if t.count('(') > t.count(')') else t for t in types]
-                    typologies.update(types)
+                    typologies.add(column)
 
         result = CustomSortService.custom_sort(list(typologies))
 
