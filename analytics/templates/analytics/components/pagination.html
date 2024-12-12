@@ -1,0 +1,25 @@
+<nav class="border-t border-gray-200 px-6 py-4 bg-white flex items-center justify-between" id="pagination">
+    <button
+        {% if energy_data.has_previous %}
+        data-page="{{ energy_data.previous_page_number }}"
+        class="pagination-btn px-3 py-2 text-sm font-semibold text-gray-900 bg-white rounded-md hover:bg-gray-50 border border-gray-300"
+        {% else %}
+        disabled
+        class="px-3 py-2 text-sm font-semibold text-gray-400 bg-gray-100 rounded-md border border-gray-300 cursor-not-allowed"
+        {% endif %}
+    >Précédent</button>
+
+    <span class="text-sm text-gray-700">
+        Page {{ energy_data.number }} sur {{ energy_data.paginator.num_pages }}
+    </span>
+
+    <button
+        {% if energy_data.has_next %}
+        data-page="{{ energy_data.next_page_number }}"
+        class="pagination-btn px-3 py-2 text-sm font-semibold text-gray-900 bg-white rounded-md hover:bg-gray-50 border border-gray-300"
+        {% else %}
+        disabled
+        class="px-3 py-2 text-sm font-semibold text-gray-400 bg-gray-100 rounded-md border border-gray-300 cursor-not-allowed"
+        {% endif %}
+    >Suivant</button>
+</nav>

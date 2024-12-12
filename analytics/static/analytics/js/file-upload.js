@@ -1,18 +1,18 @@
 export function initFileUpload() {
-    const form = document.getElementById('uploadForm');
-    const dropZone = document.querySelector('.border-dashed');
-    const fileInput = document.getElementById('file-upload');
+    let form = document.getElementById('uploadForm');
+    let drop = document.querySelector('.border-dashed');
+    let input = document.getElementById('file-upload');
 
-    if (!form || !fileInput) return;
+    if (!form || !input) return;
 
-    fileInput.addEventListener('change', () => form.submit());
+    input.onchange = () => form.submit();
 
-    if (dropZone) {
-        dropZone.addEventListener('dragover', e => e.preventDefault());
-        dropZone.addEventListener('drop', e => {
+    if (drop) {
+        drop.ondragover = e => e.preventDefault();
+        drop.ondrop = e => {
             e.preventDefault();
-            fileInput.files = e.dataTransfer.files;
+            input.files = e.dataTransfer.files;
             form.submit();
-        });
+        };
     }
 }

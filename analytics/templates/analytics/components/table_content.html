@@ -1,0 +1,7 @@
+{% for data in energy_data %}
+<tr class="hover:bg-gray-50">
+    <td class="px-4 py-4 text-sm text-gray-900">{{ data.region }}</td>
+    <td class="px-4 py-4 text-sm text-gray-500">{{ data.date }}</td>
+    <td class="px-4 py-4 text-sm text-gray-500">{{ data.get_formatted_consumption }}</td>
+</tr>
+{% endfor %}
