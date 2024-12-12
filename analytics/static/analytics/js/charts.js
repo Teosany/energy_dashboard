@@ -54,8 +54,11 @@ export function initCharts() {
     let buttons = document.querySelectorAll('[data-view]');
     buttons.forEach(btn => {
         btn.onclick = (e) => {
-            buttons.forEach(b => b.classList.remove('active'));
-            e.target.classList.add('active');
+            buttons.forEach(b => {
+                b.className = 'px-4 py-2 rounded-md hover:bg-gray-100';
+            });
+            e.target.className = 'px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600';
+
             makeChart(e.target.dataset.view);
         };
     });
