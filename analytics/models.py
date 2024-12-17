@@ -19,7 +19,7 @@ class EnergyData(models.Model):
         verbose_name = verbose_name_plural = "Energy Data"
         ordering = ['-date', 'region']
         indexes = [
-            models.Index(fields=['date', 'region']),
+            models.Index(fields=['date']),
             models.Index(fields=['region']),
         ]
 
