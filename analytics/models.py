@@ -38,3 +38,6 @@ class EnergyData(models.Model):
                 raise ValidationError({
                     'consumption': "Invalid number format. Use comma as decimal separator (e.g., 42,5)"
                 })
+
+    def __str__(self) -> str:
+        return f"{self.region} - {self.date}: {self.get_formatted_consumption()}"

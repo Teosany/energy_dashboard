@@ -1,8 +1,10 @@
+from typing import Any, Dict
+
 from django.views.generic import TemplateView
 from django.contrib import messages
 from django.shortcuts import redirect
 from django.core.paginator import Paginator
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpRequest
 from django.template.loader import render_to_string
 from django.http import JsonResponse
 
@@ -20,7 +22,7 @@ class HomeView(TemplateView):
     def get_queryset(self):
         return EnergyData.objects.all().order_by('-date')
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, **kwargs: Any) -> Dict[str, Any]:
         queryset = self.get_queryset()
         page = self.request.GET.get('page', 1)
         data = Paginator(queryset, self.paginate_by).get_page(page)
@@ -32,7 +34,7 @@ class HomeView(TemplateView):
             **chartData
         }
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request: HttpRequest, *args: Any, **kwargs: Any) -> HttpResponse:
         if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
             page_num = request.GET.get('page', 1)
             data = Paginator(self.get_queryset(), self.paginate_by).get_page(page_num)
@@ -45,7 +47,7 @@ class HomeView(TemplateView):
             })
         return super().get(request, *args, **kwargs)
 
-    def post(self, request) -> HttpResponse:
+    def post(self, request: HttpRequest) -> HttpResponse:
         form = CSVUploadForm(request.POST, request.FILES)
         if not form.is_valid():
             messages.error(request, 'Invalid form data')
